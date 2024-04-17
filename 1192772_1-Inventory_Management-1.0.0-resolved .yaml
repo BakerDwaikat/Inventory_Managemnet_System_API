@@ -1,0 +1,1245 @@
+---
+openapi: 3.1.0
+info:
+  title: Inventory Management - OpenAPI 3.1
+  description: |-
+    This is a Inventory Management System Server based on the OpenAPI 3.1.0 specification.  You can find out more about
+    the API at [Inventory_Managemnet_System_API](https://github.com/BakerDwaikat/Inventory_Managemnet_System_API). In the first milestone of this project, I Designed the API first rather than implementing it.
+    That way, with time, I can improve the API in general, and expose some of the new features in OAS3.
+    This API was a part of university course assignment as we learn how designing the API works using YAML and swagger.
+
+
+    Some useful links:
+    - [The Inventory Management repository](https://github.com/BakerDwaikat/Inventory_Managemnet_System_API)
+  version: 1.0.0
+servers:
+- url: https://localhost:8080/api/V1.0
+tags:
+- name: item
+  description: Managed in the inventories
+- name: supplier
+  description: He who supplies items
+- name: storage
+  description: Where Items are stored
+- name: order
+  description: shipments arriving of items
+paths:
+  /item:
+    put:
+      tags:
+      - item
+      summary: Update or Replace existing item
+      description: Update an existing item by itemID
+      operationId: PUTItem
+      requestBody:
+        description: Update an existing item
+        content:
+          application/json:
+            schema:
+              required:
+              - itemID
+              - name
+              - price
+              - quantity
+              type: object
+              properties:
+                itemID:
+                  type: integer
+                  format: int64
+                  example: 1
+                name:
+                  type: string
+                  example: GPU
+                price:
+                  type: number
+                  example: 20.5
+                quantiy:
+                  type: integer
+                  format: int64
+                  example: 100
+                supplierID:
+                  type: string
+                  example: sup12
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - itemID
+                - name
+                - price
+                - quantity
+                type: object
+                properties:
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                  name:
+                    type: string
+                    example: GPU
+                  price:
+                    type: number
+                    example: 20.5
+                  quantiy:
+                    type: integer
+                    format: int64
+                    example: 100
+                  supplierID:
+                    type: string
+                    example: sup12
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    post:
+      tags:
+      - item
+      summary: Add a new item
+      description: Add a new item
+      operationId: addItem
+      requestBody:
+        description: Create a new item
+        content:
+          application/json:
+            schema:
+              required:
+              - itemID
+              - name
+              - price
+              - quantity
+              type: object
+              properties:
+                itemID:
+                  type: integer
+                  format: int64
+                  example: 1
+                name:
+                  type: string
+                  example: GPU
+                price:
+                  type: number
+                  example: 20.5
+                quantiy:
+                  type: integer
+                  format: int64
+                  example: 100
+                supplierID:
+                  type: string
+                  example: sup12
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - itemID
+                - name
+                - price
+                - quantity
+                type: object
+                properties:
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                  name:
+                    type: string
+                    example: GPU
+                  price:
+                    type: number
+                    example: 20.5
+                  quantiy:
+                    type: integer
+                    format: int64
+                    example: 100
+                  supplierID:
+                    type: string
+                    example: sup12
+        "400":
+          description: Bad Request
+    get:
+      tags:
+      - item
+      summary: get all items
+      description: Returns a single item
+      operationId: getAllItems
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - itemID
+                - name
+                - price
+                - quantity
+                type: object
+                properties:
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                  name:
+                    type: string
+                    example: GPU
+                  price:
+                    type: number
+                    example: 20.5
+                  quantiy:
+                    type: integer
+                    format: int64
+                    example: 100
+                  supplierID:
+                    type: string
+                    example: sup12
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+  /item/{itemID}:
+    get:
+      tags:
+      - item
+      summary: Find item by ID
+      description: Returns a single item
+      operationId: getItem
+      parameters:
+      - name: itemID
+        in: path
+        description: ID of item to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - itemID
+                - name
+                - price
+                - quantity
+                type: object
+                properties:
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                  name:
+                    type: string
+                    example: GPU
+                  price:
+                    type: number
+                    example: 20.5
+                  quantiy:
+                    type: integer
+                    format: int64
+                    example: 100
+                  supplierID:
+                    type: string
+                    example: sup12
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    delete:
+      tags:
+      - item
+      summary: Deletes an item
+      description: delete an item
+      operationId: deleteItem
+      parameters:
+      - name: itemID
+        in: path
+        description: Item id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Deleted Successfully.
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    patch:
+      tags:
+      - item
+      summary: Partially update or modify existing item
+      description: Partially update/modify an item
+      operationId: patchItem
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - itemID
+                - name
+                - price
+                - quantity
+                type: object
+                properties:
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                  name:
+                    type: string
+                    example: GPU
+                  price:
+                    type: number
+                    example: 20.5
+                  quantiy:
+                    type: integer
+                    format: int64
+                    example: 100
+                  supplierID:
+                    type: string
+                    example: sup12
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+  /order:
+    post:
+      tags:
+      - order
+      summary: Place an order for an item from supplier
+      description: Place a new order from a supplier
+      operationId: placeOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderID:
+                  type: integer
+                  format: int64
+                  example: 10
+                price:
+                  type: integer
+                  format: int64
+                  example: 198772
+                quantity:
+                  type: integer
+                  format: int32
+                  example: 7
+                Date:
+                  type: string
+                  format: date
+                supplierID:
+                  type: string
+                  example: sup12
+                itemID:
+                  type: integer
+                  format: int64
+                  example: 1
+              xml:
+                name: order
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderID:
+                    type: integer
+                    format: int64
+                    example: 10
+                  price:
+                    type: integer
+                    format: int64
+                    example: 198772
+                  quantity:
+                    type: integer
+                    format: int32
+                    example: 7
+                  Date:
+                    type: string
+                    format: date
+                  supplierID:
+                    type: string
+                    example: sup12
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                xml:
+                  name: order
+        "400":
+          description: Bad Request
+    get:
+      tags:
+      - order
+      summary: get all orders
+      description: For valid response try 'ord' followed by an integer. Other values will generate exceptions.
+      operationId: getallOrders
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderID:
+                    type: integer
+                    format: int64
+                    example: 10
+                  price:
+                    type: integer
+                    format: int64
+                    example: 198772
+                  quantity:
+                    type: integer
+                    format: int32
+                    example: 7
+                  Date:
+                    type: string
+                    format: date
+                  supplierID:
+                    type: string
+                    example: sup12
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                xml:
+                  name: order
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    put:
+      tags:
+      - order
+      summary: Update or Replace existing order
+      description: Update an existing order by orderID
+      operationId: PUTOrder
+      requestBody:
+        description: Update an existing order
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderID:
+                  type: integer
+                  format: int64
+                  example: 10
+                price:
+                  type: integer
+                  format: int64
+                  example: 198772
+                quantity:
+                  type: integer
+                  format: int32
+                  example: 7
+                Date:
+                  type: string
+                  format: date
+                supplierID:
+                  type: string
+                  example: sup12
+                itemID:
+                  type: integer
+                  format: int64
+                  example: 1
+              xml:
+                name: order
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderID:
+                    type: integer
+                    format: int64
+                    example: 10
+                  price:
+                    type: integer
+                    format: int64
+                    example: 198772
+                  quantity:
+                    type: integer
+                    format: int32
+                    example: 7
+                  Date:
+                    type: string
+                    format: date
+                  supplierID:
+                    type: string
+                    example: sup12
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                xml:
+                  name: order
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+  /order/{orderId}:
+    get:
+      tags:
+      - order
+      summary: Find purchase order by ID
+      description: For valid response try 'ord' followed by an integer. Other values will generate exceptions.
+      operationId: getOrderById
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of order that needs to be fetched
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderID:
+                    type: integer
+                    format: int64
+                    example: 10
+                  price:
+                    type: integer
+                    format: int64
+                    example: 198772
+                  quantity:
+                    type: integer
+                    format: int32
+                    example: 7
+                  Date:
+                    type: string
+                    format: date
+                  supplierID:
+                    type: string
+                    example: sup12
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                xml:
+                  name: order
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    delete:
+      tags:
+      - order
+      summary: Delete purchase order by ID
+      description: For valid response try 'ord' followed by an integer. Other values will generate exceptions.
+      operationId: deleteOrder
+      parameters:
+      - name: orderId
+        in: path
+        description: ID of the order that needs to be deleted
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: Deleted Successfully.
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    patch:
+      tags:
+      - order
+      summary: Partially update or modify existing order
+      description: Partially update/modify an order
+      operationId: patchOrder
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orderID:
+                    type: integer
+                    format: int64
+                    example: 10
+                  price:
+                    type: integer
+                    format: int64
+                    example: 198772
+                  quantity:
+                    type: integer
+                    format: int32
+                    example: 7
+                  Date:
+                    type: string
+                    format: date
+                  supplierID:
+                    type: string
+                    example: sup12
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+                xml:
+                  name: order
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+  /supplier:
+    post:
+      tags:
+      - supplier
+      summary: Creates a supplier
+      description: Creates a supplier of items
+      operationId: createSupplier
+      requestBody:
+        description: Create a new supplier
+        content:
+          application/json:
+            schema:
+              required:
+              - supplierID
+              - name
+              type: object
+              properties:
+                supplierID:
+                  type: string
+                  example: sup12
+                name:
+                  type: string
+                  example: Mohammed
+                location:
+                  type: string
+                  example: Ramallah
+                phone:
+                  type: string
+                  example: "0595321456"
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - supplierID
+                - name
+                type: object
+                properties:
+                  supplierID:
+                    type: string
+                    example: sup12
+                  name:
+                    type: string
+                    example: Mohammed
+                  location:
+                    type: string
+                    example: Ramallah
+                  phone:
+                    type: string
+                    example: "0595321456"
+        "400":
+          description: Bad Request
+    get:
+      tags:
+      - supplier
+      summary: get all suppliers
+      description: For valid response try 'sup' followed by an integer. Other values will generate exceptions.
+      operationId: getAllSuppliers
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - supplierID
+                - name
+                type: object
+                properties:
+                  supplierID:
+                    type: string
+                    example: sup12
+                  name:
+                    type: string
+                    example: Mohammed
+                  location:
+                    type: string
+                    example: Ramallah
+                  phone:
+                    type: string
+                    example: "0595321456"
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    put:
+      tags:
+      - supplier
+      summary: Update or Replace existing supplier
+      description: Update an existing supplier by supplierID
+      operationId: PUTsupplier
+      requestBody:
+        description: Update an existing supplier
+        content:
+          application/json:
+            schema:
+              required:
+              - supplierID
+              - name
+              type: object
+              properties:
+                supplierID:
+                  type: string
+                  example: sup12
+                name:
+                  type: string
+                  example: Mohammed
+                location:
+                  type: string
+                  example: Ramallah
+                phone:
+                  type: string
+                  example: "0595321456"
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - supplierID
+                - name
+                type: object
+                properties:
+                  supplierID:
+                    type: string
+                    example: sup12
+                  name:
+                    type: string
+                    example: Mohammed
+                  location:
+                    type: string
+                    example: Ramallah
+                  phone:
+                    type: string
+                    example: "0595321456"
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+  /supplier/{supplierID}:
+    get:
+      tags:
+      - supplier
+      summary: get Supplier based on ID
+      description: For valid response try 'sup' followed by an integer. Other values will generate exceptions.
+      operationId: getSupplier
+      parameters:
+      - name: supplierID
+        in: path
+        description: ID of supplier that needs to be fetched
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - supplierID
+                - name
+                type: object
+                properties:
+                  supplierID:
+                    type: string
+                    example: sup12
+                  name:
+                    type: string
+                    example: Mohammed
+                  location:
+                    type: string
+                    example: Ramallah
+                  phone:
+                    type: string
+                    example: "0595321456"
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    delete:
+      tags:
+      - supplier
+      summary: Delete supplier
+      description: This can only be done by the logged in supplier.
+      operationId: deleteSupplier
+      parameters:
+      - name: supplierID
+        in: path
+        description: ID of supplier that needs to be deleted
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Deleted Successfully.
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    patch:
+      tags:
+      - supplier
+      summary: Partially update or modify existing supplier
+      description: Partially update/modify an supplier
+      operationId: patchSupplier
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - supplierID
+                - name
+                type: object
+                properties:
+                  supplierID:
+                    type: string
+                    example: sup12
+                  name:
+                    type: string
+                    example: Mohammed
+                  location:
+                    type: string
+                    example: Ramallah
+                  phone:
+                    type: string
+                    example: "0595321456"
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+  /storage:
+    post:
+      tags:
+      - storage
+      summary: Creates a storage
+      description: Creates a storage of items
+      operationId: createStorage
+      requestBody:
+        description: Create a new storage
+        content:
+          application/json:
+            schema:
+              required:
+              - storageID
+              - size
+              - location
+              - manager
+              - itemID
+              type: object
+              properties:
+                storageID:
+                  type: string
+                  example: sto2
+                size:
+                  type: integer
+                  format: int64
+                  example: 20
+                location:
+                  type: string
+                  example: Ramallah
+                manager:
+                  type: string
+                  example: Mohammed
+                itemID:
+                  type: integer
+                  format: int64
+                  example: 1
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - storageID
+                - size
+                - location
+                - manager
+                - itemID
+                type: object
+                properties:
+                  storageID:
+                    type: string
+                    example: sto2
+                  size:
+                    type: integer
+                    format: int64
+                    example: 20
+                  location:
+                    type: string
+                    example: Ramallah
+                  manager:
+                    type: string
+                    example: Mohammed
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+        "400":
+          description: Bad Request
+    get:
+      tags:
+      - storage
+      summary: get all storages
+      description: For valid response try 'sto' followed by an integer. Other values will generate exceptions.
+      operationId: getAllStorages
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - storageID
+                - size
+                - location
+                - manager
+                - itemID
+                type: object
+                properties:
+                  storageID:
+                    type: string
+                    example: sto2
+                  size:
+                    type: integer
+                    format: int64
+                    example: 20
+                  location:
+                    type: string
+                    example: Ramallah
+                  manager:
+                    type: string
+                    example: Mohammed
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    put:
+      tags:
+      - storage
+      summary: Update or Replace existing storage
+      description: Update an existing storage by storageID
+      operationId: PUTstorage
+      requestBody:
+        description: Update an existing storage
+        content:
+          application/json:
+            schema:
+              required:
+              - storageID
+              - size
+              - location
+              - manager
+              - itemID
+              type: object
+              properties:
+                storageID:
+                  type: string
+                  example: sto2
+                size:
+                  type: integer
+                  format: int64
+                  example: 20
+                location:
+                  type: string
+                  example: Ramallah
+                manager:
+                  type: string
+                  example: Mohammed
+                itemID:
+                  type: integer
+                  format: int64
+                  example: 1
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - storageID
+                - size
+                - location
+                - manager
+                - itemID
+                type: object
+                properties:
+                  storageID:
+                    type: string
+                    example: sto2
+                  size:
+                    type: integer
+                    format: int64
+                    example: 20
+                  location:
+                    type: string
+                    example: Ramallah
+                  manager:
+                    type: string
+                    example: Mohammed
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+  /storage/{storageID}:
+    get:
+      tags:
+      - storage
+      summary: get storage based on ID
+      description: For valid response try 'sto' followed by an integer. Other values will generate exceptions.
+      operationId: getStorage
+      parameters:
+      - name: storageID
+        in: path
+        description: ID of storage that needs to be fetched
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - storageID
+                - size
+                - location
+                - manager
+                - itemID
+                type: object
+                properties:
+                  storageID:
+                    type: string
+                    example: sto2
+                  size:
+                    type: integer
+                    format: int64
+                    example: 20
+                  location:
+                    type: string
+                    example: Ramallah
+                  manager:
+                    type: string
+                    example: Mohammed
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    delete:
+      tags:
+      - storage
+      summary: Delete storage
+      description: This can only be done by the logged in storage.
+      operationId: deleteStorage
+      parameters:
+      - name: storageID
+        in: path
+        description: ID of storage that needs to be fetched
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Deleted Successfully.
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+    patch:
+      tags:
+      - storage
+      summary: Partially update or modify existing storage
+      description: Partially update/modify an storage
+      operationId: patchStorage
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                required:
+                - storageID
+                - size
+                - location
+                - manager
+                - itemID
+                type: object
+                properties:
+                  storageID:
+                    type: string
+                    example: sto2
+                  size:
+                    type: integer
+                    format: int64
+                    example: 20
+                  location:
+                    type: string
+                    example: Ramallah
+                  manager:
+                    type: string
+                    example: Mohammed
+                  itemID:
+                    type: integer
+                    format: int64
+                    example: 1
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        orderID:
+          type: integer
+          format: int64
+          example: 10
+        price:
+          type: integer
+          format: int64
+          example: 198772
+        quantity:
+          type: integer
+          format: int32
+          example: 7
+        Date:
+          type: string
+          format: date
+        supplierID:
+          type: string
+          example: sup12
+        itemID:
+          type: integer
+          format: int64
+          example: 1
+      xml:
+        name: order
+    Supplier:
+      required:
+      - supplierID
+      - name
+      type: object
+      properties:
+        supplierID:
+          type: string
+          example: sup12
+        name:
+          type: string
+          example: Mohammed
+        location:
+          type: string
+          example: Ramallah
+        phone:
+          type: string
+          example: "0595321456"
+    Item:
+      required:
+      - itemID
+      - name
+      - price
+      - quantity
+      type: object
+      properties:
+        itemID:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: GPU
+        price:
+          type: number
+          example: 20.5
+        quantiy:
+          type: integer
+          format: int64
+          example: 100
+        supplierID:
+          type: string
+          example: sup12
+    Storage:
+      required:
+      - storageID
+      - size
+      - location
+      - manager
+      - itemID
+      type: object
+      properties:
+        storageID:
+          type: string
+          example: sto2
+        size:
+          type: integer
+          format: int64
+          example: 20
+        location:
+          type: string
+          example: Ramallah
+        manager:
+          type: string
+          example: Mohammed
+        itemID:
+          type: integer
+          format: int64
+          example: 1

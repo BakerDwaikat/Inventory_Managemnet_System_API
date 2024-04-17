@@ -1,0 +1,1560 @@
+{
+	"info": {
+		"_postman_id": "f51a12ec-df60-4681-9f31-1f56f14b4c3a",
+		"name": "Inventory Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33584709"
+	},
+	"item": [
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "getAllItems",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/item",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getItemById",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/3",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/s",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"s"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/60",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"60"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "createItem",
+					"item": [
+						{
+							"name": "201 Created",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item_id\": 1,\r\n    \"name\": \"GPU\",\r\n    \"price\": 12,\r\n    \"quantity\": 3,\r\n    \"supplier\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/item",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item_id\": 14,\r\n    \"name\": \"GPU\",\r\n    \"price\": {\r\n\r\n    },\r\n    \"quantity\": 3,\r\n    \"supplier\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/item",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updateItem (PUT)",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item_id\": 4,\r\n    \"name\": \"CPU\",\r\n    \"price\": 12,\r\n    \"quantity\": 3,\r\n    \"supplier\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/item",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item_id\": \"s\",\r\n    \"name\": \"CPU\",\r\n    \"price\": 12,\r\n    \"quantity\": 3,\r\n    \"supplier\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/item",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item_id\": 2,\r\n    \"name\": \"CPU\",\r\n    \"price\": 12,\r\n    \"quantity\": 3,\r\n    \"supplier\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/item",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updateItemById (PATCH)",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item_id\": 4,\r\n    \"name\": \"SSD\",\r\n    \"price\": 12,\r\n    \"quantity\": 3,\r\n    \"supplier\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/4",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item_id\": 2,\r\n    \"name\": \"CPU\",\r\n    \"price\": 12,\r\n    \"quantity\": 3,\r\n    \"supplier\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/2",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"item_id\": 4,\r\n    \"name\": \"CPU\",\r\n    \"price\": \"s\",\r\n    \"quantity\": 3,\r\n    \"supplier\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/4",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "deleteItemById",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/14",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"14"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/2",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/item/s",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"item",
+										"s"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "getAllOrders",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/order",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getOrderById",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/order/1",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/order/99",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order",
+										"99"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/order/se",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order",
+										"se"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "createOrder",
+					"item": [
+						{
+							"name": "201 Created",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\": 2,\r\n    \"price\": 12.0,\r\n    \"quantity\": 200,\r\n    \"date\": \"2024-03-15\",\r\n    \"supplier\": null,\r\n    \"items\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/order",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\": \"ty\",\r\n    \"price\": 12.0,\r\n    \"quantity\": 200,\r\n    \"date\": \"2024-03-15\",\r\n    \"supplier\": null,\r\n    \"items\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/order",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updateOrder",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\": 2,\r\n    \"price\": 12.0,\r\n    \"quantity\": 1000,\r\n    \"date\": \"2024-03-15\",\r\n    \"supplier\": null,\r\n    \"items\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/order",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\": 5,\r\n    \"price\": 12.0,\r\n    \"quantity\": 1000,\r\n    \"date\": \"2024-03-15\",\r\n    \"supplier\": null,\r\n    \"items\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/order",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\": \"asd\",\r\n    \"price\": 12.0,\r\n    \"quantity\": 1000,\r\n    \"date\": \"2024-03-15\",\r\n    \"supplier\": null,\r\n    \"items\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/order",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "patchOrderById",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\": 2,\r\n    \"price\": 12.0,\r\n    \"quantity\": 13,\r\n    \"date\": \"2024-03-15\",\r\n    \"supplier\": null,\r\n    \"items\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/order/2",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\": 2,\r\n    \"price\": 12.0,\r\n    \"quantity\": \"12t\",\r\n    \"date\": \"2024-03-15\",\r\n    \"supplier\": null,\r\n    \"items\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/order/2",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"order_id\": 2,\r\n    \"price\": 12.0,\r\n    \"quantity\": 13,\r\n    \"date\": \"2024-03-15\",\r\n    \"supplier\": null,\r\n    \"items\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/order/16",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order",
+										"16"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "deleteOrder",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/order/2",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/order/87",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"order",
+										"87"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Supplier",
+			"item": [
+				{
+					"name": "getAllSupplier",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getSupplierById",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/1",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/99",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"99"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/se",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"se"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "createSupplier",
+					"item": [
+						{
+							"name": "201 Created",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_id\": 1,\r\n    \"name\": \"Ahmad\",\r\n    \"location\": \"Ramallah\",\r\n    \"phone\": \"0598765432\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_id\": null,\r\n    \"name\": \"Ahmad\",\r\n    \"location\": \"Ramallah\",\r\n    \"phone\": \"0598765432\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updateSupplier",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_id\": 1,\r\n    \"name\": \"Ahmad\",\r\n    \"location\": \"Nablus\",\r\n    \"phone\": \"0598765432\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_id\": 15,\r\n    \"name\": \"Ahmad\",\r\n    \"location\": \"Ramallah\",\r\n    \"phone\": \"0598765432\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_id\": null,\r\n    \"name\": \"Ahmad\",\r\n    \"location\": \"Ramallah\",\r\n    \"phone\": \"0598765432\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "patchSupplierById",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_id\": 1,\r\n    \"name\": \"Ahmad\",\r\n    \"location\": \"Ramallah\",\r\n    \"phone\": \"0598765432\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/1",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_id\": null,\r\n    \"name\": \"Ahmad\",\r\n    \"location\": \"Ramallah\",\r\n    \"phone\": \"0598765432\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/2",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_id\": 16,\r\n    \"name\": \"Ahmad\",\r\n    \"location\": \"Ramallah\",\r\n    \"phone\": \"0598765432\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/16",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"16"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "deleteSupplier",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/2",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/87",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"87"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Storage",
+			"item": [
+				{
+					"name": "getAllStorage",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "getStorageById",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage/1",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage/99",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage",
+										"99"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage/se",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage",
+										"se"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "createStorage",
+					"item": [
+						{
+							"name": "201 Created",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"storage_id\": 6,\r\n    \"size\": 15,\r\n    \"manager\": \"Moe\",\r\n    \"location\": \"Ramallah\",\r\n    \"storageItems\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"storage_id\": 1,\r\n    \"size\": \"manager\",\r\n    \"manager\": null,\r\n    \"location\": \"Ramallah\",\r\n    \"storageItems\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "updateStorage",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"storage_id\": 1,\r\n    \"size\": 15,\r\n    \"manager\": null,\r\n    \"location\": \"Ramallah\",\r\n    \"storageItems\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"storage_id\": 99,\r\n    \"size\": null,\r\n    \"manager\": null,\r\n    \"location\": \"Ramallah\",\r\n    \"storageItems\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"storage_id\": 1,\r\n    \"size\": \"man\",\r\n    \"manager\": null,\r\n    \"location\": \"Ramallah\",\r\n    \"storageItems\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "patchStorageById",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"storage_id\": 1,\r\n    \"size\": null,\r\n    \"manager\": \"Samer\",\r\n    \"location\": \"Ramallah\",\r\n    \"storageItems\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage/1",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "400 Bad Request",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"storage_id\": 1,\r\n    \"size\": \"Samer\",\r\n    \"manager\": null,\r\n    \"location\": \"Ramallah\",\r\n    \"storageItems\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/1",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"storage_id\": 16,\r\n    \"size\": null,\r\n    \"manager\": null,\r\n    \"location\": \"Ramallah\",\r\n    \"storageItems\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{path}}/api/V1.0/supplier/16",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"supplier",
+										"16"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "deleteStorage",
+					"item": [
+						{
+							"name": "200 OK",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage/1",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "404 Not Found",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{path}}/api/V1.0/storage/87",
+									"host": [
+										"{{path}}"
+									],
+									"path": [
+										"api",
+										"V1.0",
+										"storage",
+										"87"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "path",
+			"value": "http://localhost:8080"
+		}
+	]
+}
