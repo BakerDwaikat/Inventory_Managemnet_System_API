@@ -34,8 +34,8 @@ public class StorageController {
 
     @PostMapping
     public ResponseEntity<StorageDTO> createStorage(@Valid @RequestBody StorageDTO storageDTO) {
-        if (storageDTO.getStorageId() != null){
-            log.error("Cannot have an ID {}", storageDTO.getStorageId());
+        if (storageDTO.getStorage_id() == null){
+            log.error("Cannot have an ID {}", storageDTO.getStorage_id());
             throw new BadRequestException(StorageController.class.getSimpleName(),"Name");
         }
         return new ResponseEntity(storageService.createStorage(storageDTO), HttpStatus.CREATED);
@@ -43,8 +43,8 @@ public class StorageController {
 
     @PutMapping
     public ResponseEntity<StorageDTO> updateStorage(@Valid @RequestBody StorageDTO storageDTO) {
-        if (storageDTO.getStorageId() == null){
-            log.error("Cannot have an ID {}", storageDTO.getStorageId());
+        if (storageDTO.getStorage_id() == null){
+            log.error("Cannot have an ID {}", storageDTO.getStorage_id());
             throw new BadRequestException(StorageController.class.getSimpleName(),"Name");
         }
         return new ResponseEntity(storageService.updateStorage(storageDTO), HttpStatus.OK);
@@ -52,8 +52,8 @@ public class StorageController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<StorageDTO> updateStorageById(@PathVariable(name = "id") long id, @Valid @RequestBody StorageDTO storageDTO) {
-        if (storageDTO.getStorageId() == null){
-            log.error("Cannot have an ID {}", storageDTO.getStorageId());
+        if (storageDTO.getStorage_id() == null){
+            log.error("Cannot have an ID {}", storageDTO.getStorage_id());
             throw new BadRequestException(StorageController.class.getSimpleName(),"Name");
         }
         return ResponseEntity.ok(storageService.patchStorageById(id, storageDTO));

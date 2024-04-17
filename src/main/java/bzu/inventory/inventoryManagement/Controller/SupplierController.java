@@ -34,8 +34,8 @@ public class SupplierController {
 
     @PostMapping
     public ResponseEntity<SupplierDTO> createSupplier(@Valid @RequestBody SupplierDTO supplierDTO) {
-        if (supplierDTO.getSupplierId() != null){
-            log.error("Cannot have an ID {}", supplierDTO.getSupplierId());
+        if (supplierDTO.getSupplier_id() == null){
+            log.error("Cannot have an ID {}", supplierDTO.getSupplier_id());
             throw new BadRequestException(SupplierController.class.getSimpleName(),"Name");
         }
         return new ResponseEntity(supplierService.createSupplier(supplierDTO), HttpStatus.CREATED);
@@ -43,8 +43,8 @@ public class SupplierController {
 
     @PutMapping
     public ResponseEntity<SupplierDTO> updateSupplier(@Valid @RequestBody SupplierDTO supplierDTO) {
-        if (supplierDTO.getSupplierId() == null){
-            log.error("Cannot have an ID {}", supplierDTO.getSupplierId());
+        if (supplierDTO.getSupplier_id() == null){
+            log.error("Cannot have an ID {}", supplierDTO.getSupplier_id());
             throw new BadRequestException(SupplierController.class.getSimpleName(),"Name");
         }
         return new ResponseEntity(supplierService.updateSupplier(supplierDTO), HttpStatus.OK);
@@ -52,8 +52,8 @@ public class SupplierController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<SupplierDTO> updateSupplierById(@PathVariable(name = "id") long id, @Valid @RequestBody SupplierDTO supplierDTO) {
-        if (supplierDTO.getSupplierId() == null){
-            log.error("Cannot have an ID {}", supplierDTO.getSupplierId());
+        if (supplierDTO.getSupplier_id() == null){
+            log.error("Cannot have an ID {}", supplierDTO.getSupplier_id());
             throw new BadRequestException(SupplierController.class.getSimpleName(),"Name");
         }
         return ResponseEntity.ok(supplierService.patchSupplierById(id, supplierDTO));

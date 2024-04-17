@@ -14,11 +14,11 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDTO {
-    private Long orderId;
+    private Long order_id;
     private BigDecimal price;
     private Long quantity;
     private Date date;
-    private Supplier supplierId;
+    private Supplier supplier;
     private Set<Item> items;
 
 }

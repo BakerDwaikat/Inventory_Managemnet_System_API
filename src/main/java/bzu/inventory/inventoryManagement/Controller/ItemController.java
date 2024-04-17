@@ -34,8 +34,8 @@ public class ItemController {
 
     @PostMapping
     public ResponseEntity<ItemDTO> createItem(@Valid @RequestBody ItemDTO itemDTO) {
-        if (itemDTO.getItemId() != null){
-            log.error("Cannot have an ID {}", itemDTO.getItemId());
+        if (itemDTO.getItem_id() == null){
+            log.error("Cannot have an ID {}", itemDTO.getItem_id());
             throw new BadRequestException(ItemController.class.getSimpleName(),"Name");
         }
         return new ResponseEntity(itemService.createItem(itemDTO), HttpStatus.CREATED);
@@ -43,8 +43,8 @@ public class ItemController {
 
     @PutMapping
     public ResponseEntity<ItemDTO> updateItem(@Valid @RequestBody ItemDTO itemDTO) {
-        if (itemDTO.getItemId() == null){
-            log.error("Cannot have an ID {}", itemDTO.getItemId());
+        if (itemDTO.getItem_id() == null){
+            log.error("Cannot have an ID {}", itemDTO.getItem_id());
             throw new BadRequestException(ItemController.class.getSimpleName(),"Name");
         }
         return new ResponseEntity(itemService.updateItem(itemDTO), HttpStatus.OK);
@@ -52,8 +52,8 @@ public class ItemController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<ItemDTO> updateItemById(@PathVariable(name = "id") long id, @Valid @RequestBody ItemDTO itemDTO) {
-        if (itemDTO.getItemId() == null){
-            log.error("Cannot have an ID {}", itemDTO.getItemId());
+        if (itemDTO.getItem_id() == null){
+            log.error("Cannot have an ID {}", itemDTO.getItem_id());
             throw new BadRequestException(ItemController.class.getSimpleName(),"Name");
         }
         return ResponseEntity.ok(itemService.patchItemById(id, itemDTO));

@@ -38,8 +38,8 @@ public class ItemServiceImplementation implements ItemService {
 
     @Override
     public ItemDTO updateItem(ItemDTO itemDTO) {
-        Item item = itemRepository.findById(itemDTO.getItemId()).orElseThrow(() -> new ResourceNotFoundException("Item","id",itemDTO.getItemId().toString()));
-        item.setItem_id(itemDTO.getItemId());
+        Item item = itemRepository.findById(itemDTO.getItem_id()).orElseThrow(() -> new ResourceNotFoundException("Item","id",itemDTO.getItem_id().toString()));
+        item.setItem_id(itemDTO.getItem_id());
         item.setName(itemDTO.getName());
         item.setPrice(itemDTO.getPrice());
         item.setQuantity(itemDTO.getQuantity());
@@ -58,7 +58,7 @@ public class ItemServiceImplementation implements ItemService {
     @Override
     public ItemDTO patchItemById(long id, ItemDTO itemDTO) {
         Item item = itemRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Item","id",String.valueOf(id)));
-        item.setItem_id(itemDTO.getItemId());
+        item.setItem_id(itemDTO.getItem_id());
         item.setName(itemDTO.getName());
         item.setPrice(itemDTO.getPrice());
         item.setQuantity(itemDTO.getQuantity());
@@ -76,7 +76,7 @@ public class ItemServiceImplementation implements ItemService {
 
     private ItemDTO maptoDto(Item item) {
         ItemDTO itemDTO = new ItemDTO();
-        itemDTO.setItemId(item.getItem_id());
+        itemDTO.setItem_id(item.getItem_id());
         itemDTO.setName(item.getName());
         itemDTO.setPrice(item.getPrice());
         itemDTO.setQuantity(item.getQuantity());
@@ -86,7 +86,7 @@ public class ItemServiceImplementation implements ItemService {
 
     private Item mapToEntity(ItemDTO itemDTO) {
         Item item = new Item();
-        item.setItem_id(itemDTO.getItemId());
+        item.setItem_id(itemDTO.getItem_id());
         item.setName(itemDTO.getName());
         item.setPrice(itemDTO.getPrice());
         item.setQuantity(itemDTO.getQuantity());

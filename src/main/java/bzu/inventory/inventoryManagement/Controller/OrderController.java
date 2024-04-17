@@ -34,8 +34,8 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<OrderDTO> createOrder(@Valid @RequestBody OrderDTO orderDTO) {
-        if (orderDTO.getOrderId() != null){
-            log.error("Cannot have an ID {}", orderDTO.getOrderId());
+        if (orderDTO.getOrder_id() == null){
+            log.error("Cannot have an ID {}", orderDTO.getOrder_id());
             throw new BadRequestException(OrderController.class.getSimpleName(),"Name");
         }
         return new ResponseEntity(orderService.createOrder(orderDTO), HttpStatus.CREATED);
@@ -43,8 +43,8 @@ public class OrderController {
 
     @PutMapping
     public ResponseEntity<OrderDTO> updateOrder(@Valid @RequestBody OrderDTO orderDTO) {
-        if (orderDTO.getOrderId() == null){
-            log.error("Cannot have an ID {}", orderDTO.getOrderId());
+        if (orderDTO.getOrder_id() == null){
+            log.error("Cannot have an ID {}", orderDTO.getOrder_id());
             throw new BadRequestException(OrderController.class.getSimpleName(),"Name");
         }
         return new ResponseEntity(orderService.updateOrder(orderDTO), HttpStatus.OK);
@@ -52,8 +52,8 @@ public class OrderController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<OrderDTO> updateOrderById(@PathVariable(name = "id") long id, @Valid @RequestBody OrderDTO orderDTO) {
-        if (orderDTO.getOrderId() == null){
-            log.error("Cannot have an ID {}", orderDTO.getOrderId());
+        if (orderDTO.getOrder_id() == null){
+            log.error("Cannot have an ID {}", orderDTO.getOrder_id());
             throw new BadRequestException(OrderController.class.getSimpleName(),"Name");
         }
         return ResponseEntity.ok(orderService.patchOrder(id, orderDTO));

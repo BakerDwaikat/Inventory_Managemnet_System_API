@@ -15,6 +15,10 @@ import java.util.stream.Collectors;
 public class OrderServiceImplementation implements OrderService {
     private OrderRepository orderRepository;
 
+    public OrderServiceImplementation(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+
     @Override
     public OrderDTO createOrder(OrderDTO orderDTO) {
         Order order = mapToEntity(orderDTO);
@@ -39,11 +43,11 @@ public class OrderServiceImplementation implements OrderService {
 
     @Override
     public OrderDTO updateOrder(OrderDTO orderDTO) {
-        Order order = orderRepository.findById(orderDTO.getOrderId()).orElseThrow(() -> new ResourceNotFoundException("Order","id",String.valueOf(orderDTO.getOrderId())));
-        order.setOrder_id(orderDTO.getOrderId());
+        Order order = orderRepository.findById(orderDTO.getOrder_id()).orElseThrow(() -> new ResourceNotFoundException("Order","id",String.valueOf(orderDTO.getOrder_id())));
+        order.setOrder_id(orderDTO.getOrder_id());
         order.setPrice(orderDTO.getPrice());
         order.setQuantity(orderDTO.getQuantity());
-        order.setSupplier(orderDTO.getSupplierId());
+        order.setSupplier(orderDTO.getSupplier());
         order.setDate(orderDTO.getDate());
         order.setItems(orderDTO.getItems());
 
@@ -54,10 +58,10 @@ public class OrderServiceImplementation implements OrderService {
     @Override
     public OrderDTO patchOrder(long id, OrderDTO orderDTO) {
         Order order = orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Order","id",String.valueOf(id)));
-        order.setOrder_id(orderDTO.getOrderId());
+        order.setOrder_id(orderDTO.getOrder_id());
         order.setPrice(orderDTO.getPrice());
         order.setQuantity(orderDTO.getQuantity());
-        order.setSupplier(orderDTO.getSupplierId());
+        order.setSupplier(orderDTO.getSupplier());
         order.setDate(orderDTO.getDate());
         order.setItems(orderDTO.getItems());
 
@@ -73,10 +77,10 @@ public class OrderServiceImplementation implements OrderService {
 
     private OrderDTO mapToDTO(Order order) {
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setOrderId(order.getOrder_id());
+        orderDTO.setOrder_id(order.getOrder_id());
         orderDTO.setPrice(order.getPrice());
         orderDTO.setQuantity(order.getQuantity());
-        orderDTO.setSupplierId(order.getSupplier());
+        orderDTO.setSupplier(order.getSupplier());
         orderDTO.setDate(order.getDate());
         orderDTO.setItems(order.getItems());
 
@@ -85,10 +89,10 @@ public class OrderServiceImplementation implements OrderService {
 
     private Order mapToEntity(OrderDTO orderDTO) {
         Order order = new Order();
-        order.setOrder_id(orderDTO.getOrderId());
+        order.setOrder_id(orderDTO.getOrder_id());
         order.setPrice(orderDTO.getPrice());
         order.setQuantity(orderDTO.getQuantity());
-        order.setSupplier(orderDTO.getSupplierId());
+        order.setSupplier(orderDTO.getSupplier());
         order.setDate(orderDTO.getDate());
         order.setItems(orderDTO.getItems());
 

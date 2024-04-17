@@ -14,6 +14,11 @@ import java.util.stream.Collectors;
 @Service
 public class SupplierServiceImplementation implements SupplierService {
     private SupplierRepository supplierRepository;
+
+    public SupplierServiceImplementation(SupplierRepository supplierRepository) {
+        this.supplierRepository = supplierRepository;
+    }
+
     @Override
     public SupplierDTO createSupplier(SupplierDTO supplierDTO) {
         Supplier supplier = mapToEntity(supplierDTO);
@@ -31,8 +36,8 @@ public class SupplierServiceImplementation implements SupplierService {
 
     @Override
     public SupplierDTO updateSupplier(SupplierDTO supplierDTO) {
-        Supplier supplier = supplierRepository.findById(supplierDTO.getSupplierId()).orElseThrow(() -> new ResourceNotFoundException("Supplier","id",supplierDTO.getSupplierId().toString()));
-        supplier.setSupplier_id(supplierDTO.getSupplierId());
+        Supplier supplier = supplierRepository.findById(supplierDTO.getSupplier_id()).orElseThrow(() -> new ResourceNotFoundException("Supplier","id",supplierDTO.getSupplier_id().toString()));
+        supplier.setSupplier_id(supplierDTO.getSupplier_id());
         supplier.setName(supplierDTO.getName());
         supplier.setPhone(supplierDTO.getPhone());
         supplier.setLocation(supplierDTO.getLocation());
@@ -49,7 +54,7 @@ public class SupplierServiceImplementation implements SupplierService {
     @Override
     public SupplierDTO patchSupplierById(long id, SupplierDTO supplierDTO) {
         Supplier supplier = supplierRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Supplier","id",String.valueOf(id)));
-        supplier.setSupplier_id(supplierDTO.getSupplierId());
+        supplier.setSupplier_id(supplierDTO.getSupplier_id());
         supplier.setName(supplierDTO.getName());
         supplier.setPhone(supplierDTO.getPhone());
         supplier.setLocation(supplierDTO.getLocation());
@@ -65,7 +70,7 @@ public class SupplierServiceImplementation implements SupplierService {
 
     private Supplier mapToEntity(SupplierDTO supplierDTO) {
         Supplier supplier = new Supplier();
-        supplier.setSupplier_id(supplierDTO.getSupplierId());
+        supplier.setSupplier_id(supplierDTO.getSupplier_id());
         supplier.setName(supplierDTO.getName());
         supplier.setPhone(supplierDTO.getPhone());
         supplier.setLocation(supplierDTO.getLocation());
@@ -74,7 +79,7 @@ public class SupplierServiceImplementation implements SupplierService {
 
     private SupplierDTO mapToDTO(Supplier Supplier) {
         SupplierDTO supplierDTO = new SupplierDTO();
-        supplierDTO.setSupplierId(Supplier.getSupplier_id());
+        supplierDTO.setSupplier_id(Supplier.getSupplier_id());
         supplierDTO.setName(Supplier.getName());
         supplierDTO.setPhone(Supplier.getPhone());
         supplierDTO.setLocation(Supplier.getLocation());

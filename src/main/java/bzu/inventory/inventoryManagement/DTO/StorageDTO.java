@@ -11,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StorageDTO {
-    private Long storageId;
+    private Long storage_id;
     private Long size;
     private String manager;
     private String location;

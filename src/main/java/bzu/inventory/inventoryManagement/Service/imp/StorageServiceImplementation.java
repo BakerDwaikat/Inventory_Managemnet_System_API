@@ -14,6 +14,11 @@ import java.util.stream.Collectors;
 @Service
 public class StorageServiceImplementation implements StorageService {
     private StorageRepository storageRepository;
+
+    public StorageServiceImplementation(StorageRepository storageRepository) {
+        this.storageRepository = storageRepository;
+    }
+
     @Override
     public StorageDTO createStorage(StorageDTO storageDTO) {
         Storage storage = mapToEntity(storageDTO);
@@ -38,8 +43,8 @@ public class StorageServiceImplementation implements StorageService {
 
     @Override
     public StorageDTO updateStorage(StorageDTO storageDTO) {
-        Storage storage = storageRepository.findById(storageDTO.getStorageId()).orElseThrow(() -> new ResourceNotFoundException("Storage","id",String.valueOf(storageDTO.getStorageId())));
-        storage.setStorage_id(storageDTO.getStorageId());
+        Storage storage = storageRepository.findById(storageDTO.getStorage_id()).orElseThrow(() -> new ResourceNotFoundException("Storage","id",String.valueOf(storageDTO.getStorage_id())));
+        storage.setStorage_id(storageDTO.getStorage_id());
         storage.setManager(storageDTO.getManager());
         storage.setLocation(storageDTO.getLocation());
         storage.setSize(storageDTO.getSize());
@@ -52,7 +57,7 @@ public class StorageServiceImplementation implements StorageService {
     @Override
     public StorageDTO patchStorageById(long id, StorageDTO storageDTO) {
         Storage storage = storageRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Storage","id",String.valueOf(id)));
-        storage.setStorage_id(storageDTO.getStorageId());
+        storage.setStorage_id(storageDTO.getStorage_id());
         storage.setManager(storageDTO.getManager());
         storage.setLocation(storageDTO.getLocation());
         storage.setSize(storageDTO.getSize());
@@ -70,7 +75,7 @@ public class StorageServiceImplementation implements StorageService {
 
     private Storage mapToEntity(StorageDTO storageDTO) {
         Storage storage = new Storage();
-        storage.setStorage_id(storageDTO.getStorageId());
+        storage.setStorage_id(storageDTO.getStorage_id());
         storage.setManager(storageDTO.getManager());
         storage.setLocation(storageDTO.getLocation());
         storage.setSize(storageDTO.getSize());
@@ -80,7 +85,7 @@ public class StorageServiceImplementation implements StorageService {
 
     private StorageDTO mapToDTO(Storage storage) {
         StorageDTO storageDTO = new StorageDTO();
-        storageDTO.setStorageId(storage.getStorage_id());
+        storageDTO.setStorage_id(storage.getStorage_id());
         storageDTO.setManager(storage.getManager());
         storageDTO.setLocation(storage.getLocation());
         storageDTO.setSize(storage.getSize());
