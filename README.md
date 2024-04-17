@@ -1,4 +1,4 @@
-![image](https://github.com/BakerDwaikat/Inventory_Managemnet_System_API/assets/133254346/4a33ff9c-1107-4521-ab5b-4c1d20aa0fc1)# Inventory Management API 📦
+# Inventory Management API 📦
 This is the 1st assignment of my 🌐 Web Services 🌐 Course
 
 ## Core Resources 
