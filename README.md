@@ -1,6 +1,8 @@
 # Inventory Management API 📦
 This is the 1st assignment of my 🌐 Web Services 🌐 Course
 
+In this assignment we are required to design then implement an Inventory Management API using Spring Boot then test it using Postman
+
 ## Core Resources 
 <ol>
   <li><strong>Item:</strong> Item to be managed in the api</li>
